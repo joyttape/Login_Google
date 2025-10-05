@@ -1,0 +1,466 @@
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    font-family: 'Google Sans', 'Roboto', 'Helvetica', 'Arial', sans-serif;
+    background-color: #202124;
+    color: #e8eaed;
+    min-height: 100vh;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 14px;
+    line-height: 1.4286;
+}
+
+.container {
+    width: 100%;
+    max-width: 450px;
+    padding: 20px;
+}
+
+.login-card {
+    background-color: #303134;
+    border-radius: 8px;
+    padding: 48px 40px 36px;
+    box-shadow: 0 2px 10px 1px rgba(0,0,0,0.5);
+    text-align: center;
+    border: 1px solid #5f6368;
+}
+
+.google-logo {
+    margin-bottom: 32px;
+    display: flex;
+    justify-content: center;
+}
+
+.google-logo svg {
+    width: 75px;
+    height: 24px;
+}
+
+.step {
+    display: none;
+}
+
+.step.active {
+    display: block;
+}
+
+h1 {
+    font-size: 24px;
+    font-weight: 400;
+    margin-bottom: 8px;
+    color: #e8eaed;
+    font-family: 'Google Sans', sans-serif;
+    letter-spacing: 0;
+}
+
+.subtitle {
+    font-size: 16px;
+    color: #e8eaed;
+    margin-bottom: 32px;
+    font-weight: 400;
+    font-family: 'Google Sans', sans-serif;
+}
+
+.input-group {
+    margin-bottom: 24px;
+    text-align: left;
+    position: relative;
+}
+
+.input-group label {
+    position: absolute;
+    top: 16px;
+    left: 16px;
+    color: #9aa0a6;
+    font-size: 16px;
+    pointer-events: none;
+    transition: all 0.2s ease;
+    background-color: transparent;
+    z-index: 1;
+}
+
+.input-group.focused label,
+.input-group.filled label {
+    top: -8px;
+    left: 12px;
+    font-size: 12px;
+    color: #8ab4f8;
+    background-color: #303134;
+    padding: 0 4px;
+}
+
+input[type="email"], input[type="password"] {
+    width: 100%;
+    padding: 16px;
+    border: 1px solid #5f6368;
+    border-radius: 4px;
+    background-color: transparent;
+    color: #e8eaed;
+    font-size: 16px;
+    outline: none;
+    transition: border-color 0.2s ease;
+    font-family: 'Roboto', sans-serif;
+}
+
+input[type="email"]:focus, input[type="password"]:focus {
+    border-color: #8ab4f8;
+    border-width: 2px;
+}
+
+input[type="email"]:focus + label,
+input[type="password"]:focus + label {
+    color: #8ab4f8;
+}
+
+.forgot-email {
+    text-align: left;
+    margin-bottom: 32px;
+}
+
+.forgot-email a {
+    color: #8ab4f8;
+    text-decoration: none;
+    font-size: 14px;
+    font-weight: 500;
+}
+
+.forgot-email a:hover {
+    text-decoration: underline;
+}
+
+.guest-mode {
+    text-align: left;
+    margin-bottom: 32px;
+    font-size: 14px;
+    line-height: 1.4286;
+    color: #9aa0a6;
+}
+
+.guest-mode a {
+    color: #8ab4f8;
+    text-decoration: none;
+    font-weight: 500;
+}
+
+.guest-mode a:hover {
+    text-decoration: underline;
+}
+
+.form-actions {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-top: 32px;
+}
+
+.create-account, .forgot-password {
+    color: #8ab4f8;
+    text-decoration: none;
+    font-size: 14px;
+    font-weight: 500;
+    padding: 9px 0;
+}
+
+.create-account:hover, .forgot-password:hover {
+    text-decoration: underline;
+}
+
+.next-btn {
+    background-color: #1a73e8;
+    color: #ffffff;
+    border: none;
+    padding: 9px 23px;
+    border-radius: 4px;
+    font-size: 14px;
+    font-weight: 500;
+    cursor: pointer;
+    transition: all 0.2s ease;
+    font-family: 'Google Sans', sans-serif;
+    min-width: 80px;
+    height: 36px;
+}
+
+.next-btn:hover {
+    background-color: #1557b0;
+    box-shadow: 0 1px 2px 0 rgba(60,64,67,.3), 0 1px 3px 1px rgba(60,64,67,.15);
+}
+
+.next-btn:active {
+    background-color: #0d47a1;
+    box-shadow: 0 1px 2px 0 rgba(60,64,67,.3), 0 2px 6px 2px rgba(60,64,67,.15);
+}
+
+.next-btn:disabled {
+    background-color: #5f6368;
+    cursor: not-allowed;
+}
+
+/* Segunda tela - Senha */
+.user-info {
+    display: flex;
+    align-items: center;
+    justify-content: flex-start;
+    margin-bottom: 32px;
+    padding: 12px 16px;
+    border: 1px solid #5f6368;
+    border-radius: 4px;
+    background-color: transparent;
+    cursor: pointer;
+    transition: border-color 0.2s ease;
+}
+
+.user-info:hover {
+    border-color: #8ab4f8;
+}
+
+.user-avatar {
+    width: 32px;
+    height: 32px;
+    border-radius: 50%;
+    background-color: #ea4335;
+    color: white;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 14px;
+    font-weight: 500;
+    margin-right: 12px;
+    flex-shrink: 0;
+}
+
+#user-email {
+    flex: 1;
+    font-size: 14px;
+    color: #e8eaed;
+    text-align: left;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+}
+
+.change-account {
+    background: none;
+    border: none;
+    color: #9aa0a6;
+    cursor: pointer;
+    font-size: 16px;
+    padding: 4px;
+    margin-left: 8px;
+    flex-shrink: 0;
+}
+
+.change-account:hover {
+    color: #e8eaed;
+}
+
+.show-password {
+    display: flex;
+    align-items: center;
+    margin-bottom: 32px;
+    text-align: left;
+}
+
+.show-password input[type="checkbox"] {
+    margin-right: 8px;
+    width: 16px;
+    height: 16px;
+    accent-color: #1a73e8;
+}
+
+.show-password label {
+    font-size: 14px;
+    color: #e8eaed;
+    cursor: pointer;
+    user-select: none;
+}
+
+/* Footer */
+footer {
+    margin-top: 32px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    font-size: 12px;
+}
+
+.language-selector select {
+    background-color: transparent;
+    border: none;
+    color: #9aa0a6;
+    font-size: 12px;
+    cursor: pointer;
+    outline: none;
+    font-family: 'Roboto', sans-serif;
+}
+
+.language-selector select:hover {
+    color: #e8eaed;
+}
+
+.footer-links {
+    display: flex;
+    gap: 24px;
+}
+
+.footer-links a {
+    color: #9aa0a6;
+    text-decoration: none;
+    font-size: 12px;
+}
+
+.footer-links a:hover {
+    text-decoration: underline;
+    color: #e8eaed;
+}
+
+/* Estados de erro */
+.error-message {
+    color: #d93025;
+    font-size: 14px;
+    margin-top: 8px;
+    text-align: left;
+    line-height: 1.4286;
+}
+
+input.error {
+    border-color: #d93025 !important;
+    border-width: 2px !important;
+}
+
+/* Responsividade */
+@media (max-width: 480px) {
+    .container {
+        padding: 10px;
+    }
+    
+    .login-card {
+        padding: 32px 24px 24px;
+    }
+    
+    footer {
+        flex-direction: column;
+        gap: 16px;
+        text-align: center;
+    }
+    
+    .footer-links {
+        gap: 16px;
+    }
+    
+    .form-actions {
+        flex-direction: column;
+        gap: 16px;
+        align-items: stretch;
+    }
+    
+    .next-btn {
+        width: 100%;
+    }
+}
+
+/* Animações */
+.step {
+    animation: fadeIn 0.3s ease-in-out;
+}
+
+@keyframes fadeIn {
+    from {
+        opacity: 0;
+        transform: translateY(10px);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+/* Loading state */
+.loading {
+    opacity: 0.7;
+    pointer-events: none;
+}
+
+.next-btn.loading {
+    background-color: #5f6368;
+    position: relative;
+}
+
+.next-btn.loading::after {
+    content: '';
+    width: 16px;
+    height: 16px;
+    border: 2px solid #ffffff;
+    border-top: 2px solid transparent;
+    border-radius: 50%;
+    animation: spin 1s linear infinite;
+    position: absolute;
+    left: 50%;
+    top: 50%;
+    transform: translate(-50%, -50%);
+}
+
+@keyframes spin {
+    0% { transform: translate(-50%, -50%) rotate(0deg); }
+    100% { transform: translate(-50%, -50%) rotate(360deg); }
+}
+
+/* Melhorias de acessibilidade */
+.input-group:focus-within label {
+    color: #8ab4f8;
+}
+
+/* Efeitos de hover mais suaves */
+a, button, .user-info, .change-account {
+    transition: all 0.2s ease;
+}
+
+/* Prevenção de seleção de texto em elementos interativos */
+.next-btn, .change-account, .show-password label {
+    user-select: none;
+}
+
+/* Estilo para campos preenchidos */
+input:not(:placeholder-shown) {
+    /* Mantém o estilo quando há conteúdo */
+}
+
+/* Ajustes finos para corresponder ao Google */
+.login-card {
+    max-width: 450px;
+    margin: 0 auto;
+}
+
+.google-logo svg path {
+    /* Garantir que as cores do logo estejam corretas */
+}
+
+/* Estilo específico para o campo de email com label flutuante */
+.input-group {
+    position: relative;
+}
+
+.input-group input:focus ~ label,
+.input-group input:not(:placeholder-shown) ~ label {
+    top: -8px;
+    left: 12px;
+    font-size: 12px;
+    color: #8ab4f8;
+    background-color: #303134;
+    padding: 0 4px;
+}
+
+/* Placeholder invisível para funcionar com a label flutuante */
+input::placeholder {
+    color: transparent;
+}
+
+/* Quando o campo está focado, mostrar o placeholder */
+input:focus::placeholder {
+    color: #9aa0a6;
+}

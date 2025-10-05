@@ -1,0 +1,28 @@
+{
+  "name": "google-phishing-demo-vue",
+  "version": "1.0.0",
+  "description": "Demonstração educacional de phishing em Vue.js",
+  "type": "module",
+  "scripts": {
+    "dev": "vite",
+    "build": "vite build",
+    "preview": "vite preview",
+    "deploy": "vercel --prod"
+  },
+  "dependencies": {
+    "vue": "^3.3.0"
+  },
+  "devDependencies": {
+    "@vitejs/plugin-vue": "^4.3.0",
+    "vite": "^4.4.0"
+  },
+  "keywords": [
+    "phishing",
+    "cybersecurity",
+    "education",
+    "vue",
+    "demo"
+  ],
+  "author": "Cybersecurity Education",
+  "license": "MIT"
+}
